@@ -6,7 +6,7 @@ class SearchScraper
     result = Google::Search.perform term
 
     Query.create term: result.term
-    puts "Ad Results From Google Search Query '#{result.term}':"
+    puts "Ad Results From Google Search Query '#{result.term}':"  if ENV['VERBOSE']
 
     result.ads.each do |ad|
       Ad.create(
@@ -15,9 +15,11 @@ class SearchScraper
         description: ad.description
       )
 
-      puts "  Ad Found ##{ad.index}"
-      puts "     #{ad.link}"
-      puts "     #{ad.description}"
+      if ENV['VERBOSE']
+        puts "  Ad Found ##{ad.index}"
+        puts "     #{ad.link}"
+        puts "     #{ad.description}"
+      end
     end
   end
 end

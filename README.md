@@ -3,14 +3,16 @@
 ## Example Usage
 
 ```bash
-$ rake 'google:scrape:ads[email marketing]'
+$ VERBOSE=true rake 'google:scrape:ads[email marketing]'
 ```
 
+# Running Tests
+```bash
+$ rake spec:all
+```
 
 ## Code Status
 
-
-## Build Status
 
 ## License
 
