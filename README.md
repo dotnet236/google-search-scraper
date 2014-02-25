@@ -1,5 +1,7 @@
 ## Google Search Scraper
 
+A rake task which scrapes and persists Ad information from Google's search page.
+
 ## Example Usage
 
 ```bash
@@ -12,6 +14,8 @@ $ rake spec:all
 ```
 
 ## Code Status
+
+!("https://travis-ci.org/dotnet236/google-search-scraper.png")
 
 
 ## License
