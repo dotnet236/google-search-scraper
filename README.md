@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```bash
-$ rake 'google:search[email marketing]'
+$ rake 'google:scrape:ads[email marketing]'
 ```
 
 

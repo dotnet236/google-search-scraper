@@ -1,25 +1,13 @@
-require File.expand_path('./lib/google')
+require File.expand_path('./lib/search_scraper')
 require File.expand_path('./config/application')
 
-desc 'Search Google.com based on a specified term'
-task :search, [:term] do |t, args|
-  result = Google::Search.perform args[:term]
-
-  query = Query.create term: result.term
-  puts "Ad Results From Google Search Query '#{result.term}':"
-
-  result.ads.each do |ad|
-    Ad.create(
-      link: ad.link,
-      index: ad.index,
-      description: ad.description
-    )
-
-    puts "  Ad Found ##{ad.index}"
-    puts "     #{ad.link}"
-    puts "     #{ad.description}"
+desc 'Search & persist ads returned from a Google search'
+namespace :google do
+  namespace :scrape do
+    task :ads, [:term] do |t, args|
+      SearchScraper.scrape_ads args[:term]
+    end
   end
-
 end
 
 namespace :db do

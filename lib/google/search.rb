@@ -1,5 +1,7 @@
 require 'nokogiri'
 require 'open-uri'
+require File.expand_path('./lib/google/ad')
+require File.expand_path('./lib/google/query')
 
 module Google
   class Search
@@ -19,6 +21,7 @@ module Google
 
         ad = Ad.new index, parse_ad_url(link['href'])[:external], text.inner_html
         query.ads << ad
+        index += 1
       end
 
       query
@@ -29,25 +32,6 @@ module Google
     def self.parse_ad_url(url)
       split_url = URI.decode(url).split 'adurl='
       { google: split_url[0], external: split_url.count > 1 ? split_url[1] : nil }
-    end
-  end
-
-  class Ad
-    attr_accessor :index, :link, :description
-
-    def initialize(index, link, description)
-      @index = index
-      @link = link
-      @description = description
-    end
-  end
-
-  class Query
-    attr_accessor :term, :ads
-
-    def initialize(term)
-      @term = term
-      @ads = []
     end
   end
 end
