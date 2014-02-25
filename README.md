@@ -15,7 +15,7 @@ $ rake spec:all
 
 ## Code Status
 
-!("https://travis-ci.org/dotnet236/google-search-scraper.png")
+![](https://travis-ci.org/dotnet236/google-search-scraper.png)
 
 
 ## License
